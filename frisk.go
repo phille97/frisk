@@ -1,10 +1,12 @@
 package main
 
 import (
-    "github.com/phille97/frisk/lib"
     "net/url"
     "fmt"
     "flag"
+    "os"
+
+    "github.com/phille97/frisk/lib"
 )
 
 var (
@@ -35,4 +37,10 @@ func main() {
     health := health_checker.GetHealth(url, opts)
     fmt.Printf("State: %s\n", health.State)
     fmt.Printf("Reason (%s): %s\n", health.Reason.Severity, health.Reason.Description)
+
+    if health.State != lib.UP {
+        os.Exit(1)
+    }
+
+    os.Exit(0)
 }
