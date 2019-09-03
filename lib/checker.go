@@ -1,5 +1,5 @@
 package lib
 
 type Checker interface {
-    GetHealth() HealthStatus
+	GetHealth() HealthStatus
 }
